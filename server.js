@@ -11,7 +11,7 @@ const multer = require('multer');
 const app = express();
 app.set('trust proxy', 1);
 const PORT = process.env.PORT || 3000;
-const SITE = 'https://3draffles-production.up.railway.app';
+const SITE = 'https://3draffles-production-faeb.up.railway.app';
 
 const raffleFile = path.join(__dirname, 'data', 'raffles.json');
 const teamsFile = path.join(__dirname, 'data', 'teams.json');
