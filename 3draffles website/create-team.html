@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Team</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+  <img class="top-pic" src="hero.png" alt="3DRaffles">
+<body>
+  <div class="wrap">
+   <header>
+  <div class="logo">3DRAFFLES</div>
+  <nav class="nav">
+    <a href="/">Home</a>
+    <a href="raffles.html">Raffles</a>
+    <a href="teams.html">Teams</a>
+    <a href="collabs.html">Collabs</a>
+    <a href="winners.html">Winners</a>
+    <a href="/auth/discord">Login with Discord</a>
+  </nav>
+</header>
+    <section class="hero">
+      <h1>Create a team</h1>
+    </section>
+
+    <section class="card" style="padding:18px; margin-bottom:80px;">
+      <p style="margin:12px 0;"><input id="name" placeholder="Team name" style="width:100%; padding:12px; border-radius:10px; border:1px solid #2a2a38; background:#0f0f16; color:white;"></p>
+      <p style="margin:12px 0;"><input id="project" placeholder="Project name" style="width:100%; padding:12px; border-radius:10px; border:1px solid #2a2a38; background:#0f0f16; color:white;"></p>
+      <p style="margin:12px 0;"><input id="twitter" placeholder="X / Twitter link" style="width:100%; padding:12px; border-radius:10px; border:1px solid #2a2a38; background:#0f0f16; color:white;"></p>
+      <p style="margin:12px 0;"><input id="discord" placeholder="Discord invite" style="width:100%; padding:12px; border-radius:10px; border:1px solid #2a2a38; background:#0f0f16; color:white;"></p>
+      <p style="margin:12px 0;"><input id="ownerId" placeholder="Owner Discord user ID" style="width:100%; padding:12px; border-radius:10px; border:1px solid #2a2a38; background:#0f0f16; color:white;"></p>
+      <button class="btn" id="create-btn">Create team</button>
+      <p class="meta" id="result" style="margin-top:12px;"></p>
+    </section>
+  </div>
+
+  <script>
+    document.getElementById('create-btn').onclick = async () => {
+      const result = document.getElementById('result');
+      result.textContent = 'Saving...';
+
+      const res = await fetch('/api/teams', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: document.getElementById('name').value,
+          project: document.getElementById('project').value,
+          twitter: document.getElementById('twitter').value,
+          discord: document.getElementById('discord').value,
+          ownerId: document.getElementById('ownerId').value
+        })
+      });
+
+      const data = await res.json();
+      result.textContent = res.ok ? `Created ${data.id}` : (data.error || 'Could not create team');
+    };
+  </script>
+    <section class="wrap">
+  <div class="contact-box">
+    <h3>CONTACT US</h3>
+    <p>Technical Support: TechSupport@3DRaffled.com</p>
+    <p>Administration: Admin@3DRaffled.com</p>
+    <p>Illustrations: ArtWork@3DRaffled.com</p>
+    <p><a href="privacy.html">Privacy Policy</a></p>
+    <p>Based in the United States of America</p>
+    <p style="margin-top:14px;"><a href="https://x.com/3DCeasedNFT?s=20">Twitter</a></p>
+    <p>© 2026 3DRaffles<br>© 2025 3DCeased</p>
+    <p>Ver: 1.261005.001</p>
+  </div>
+</section>
+</body>
+</html>
