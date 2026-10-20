@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Join team</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+  <img class="top-pic" src="hero.png" alt="3DRaffles">
+<body>
+  <div class="wrap">
+ <header>
+  <div class="logo">3DRAFFLES</div>
+  <nav class="nav">
+    <a href="/">Home</a>
+    <a href="raffles.html">Raffles</a>
+    <a href="teams.html">Teams</a>
+    <a href="collabs.html">Collabs</a>
+    <a href="winners.html">Winners</a>
+    <a href="/auth/discord">Login with Discord</a>
+  </nav>
+</header>
+    <section class="hero">
+      <h1>Join team</h1>
+      <button class="btn" id="join-btn">Join</button>
+      <p class="meta" id="result"></p>
+    </section>
+  </div>
+  <script>
+    document.getElementById('join-btn').onclick = async () => {
+      const params = new URLSearchParams(window.location.search);
+      const res = await fetch('/api/join', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: params.get('code'), team: params.get('team') })
+      });
+      const data = await res.json();
+      document.getElementById('result').textContent = data.message || data.error || 'Could not join';
+    };
+  </script>
+    <section class="wrap">
+  <div class="contact-box">
+    <h3>CONTACT US</h3>
+    <p>Technical Support: TechSupport@3DRaffled.com</p>
+    <p>Administration: Admin@3DRaffled.com</p>
+    <p>Illustrations: ArtWork@3DRaffled.com</p>
+    <p><a href="privacy.html">Privacy Policy</a></p>
+    <p>Based in the United States of America</p>
+    <p style="margin-top:14px;"><a href="https://x.com/3DCeasedNFT?s=20">Twitter</a></p>
+    <p>© 2026 3DRaffles<br>© 2025 3DCeased</p>
+    <p>Ver: 1.261005.001</p>
+  </div>
+</section>
+</body>
+</html>
