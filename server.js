@@ -148,7 +148,7 @@ app.post('/api/raffles/:id/enter', async (req, res) => {
 });
 
 app.post('/api/raffles/create', upload.single('banner'), requireAccount, async (req, res) => {
-  const userId = (req.session.user && req.session.user.id) || (req.session.account && req.session.account.username) || 'admin';
+ const userId = (req.session.user && req.session.user.id) || 'admin';
 if (!isPaymentActive(userId)) {
   return res.status(402).json({ error: 'Payment required or expired. Please renew to launch raffles.' });
 }
@@ -487,7 +487,7 @@ app.get('/api/teams/:id/dashboard', (req, res) => {
   });
 });
 app.get('/api/admin/payment-status', requireAccount, (req, res) => {
-  const userId = (req.session.user && req.session.user.id) || req.session.account.username || 'admin';
+const userId = (req.session.user && req.session.user.id) || 'admin';
   const payment = getPayment(userId);
   res.json({
     active: isPaymentActive(userId),
@@ -496,7 +496,7 @@ app.get('/api/admin/payment-status', requireAccount, (req, res) => {
 });
 
 app.post('/api/admin/mark-paid', requireAccount, (req, res) => {
-  const userId = (req.session.user && req.session.user.id) || req.session.account.username || 'admin';
+ const userId = (req.session.user && req.session.user.id) || 'admin';
   const payment = setPayment(userId, 30);
   res.json({ ok: true, payment });
 });
