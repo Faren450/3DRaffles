@@ -19,19 +19,19 @@
     </section>
   </div>
   <script>
-    document.getElementById('login-btn').onclick = async () => {
-      const res = await fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: document.getElementById('password').value })
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        document.getElementById('result').textContent = data.error || 'Failed';
-        return;
-      }
-      window.location.href = '/';
-    };
+   document.getElementById('login-btn').onclick = async () => {
+  const res = await fetch('/api/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password: document.getElementById('password').value })
+  });
+  const data = await res.json();
+  if (!res.ok) {
+    window.location.href = '/wrong-password.html';
+    return;
+  }
+  window.location.href = '/';
+};
   </script>
     <section class="wrap">
   <div class="contact-box">
