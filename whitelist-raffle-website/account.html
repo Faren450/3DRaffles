@@ -29,12 +29,13 @@
         body: JSON.stringify({ password: document.getElementById('password').value })
       });
       const data = await res.json();
-      if (!res.ok) {
-        window.location.href = '/wrong-password.html';
-        return;
-      }
-      window.location.href = '/';
-    };
+  if (!res.ok) {
+  if (res.status === 429) {
+    alert(data.error || 'Too many attempts. Try again later.');
+  }
+  window.location.href = '/wrong-password.html';
+  return;
+}
   </script>
 
   <script>
