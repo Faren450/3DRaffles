@@ -5,60 +5,64 @@
   <title>Login</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-  <img class="top-pic" src="hero.png" alt="3DRaffles">
 <body>
+  <img class="top-pic" src="hero.png" alt="3DRaffles">
   <div class="wrap">
     <section class="hero">
       <h1>3DRaffles</h1>
       <p>Staff login</p>
     </section>
     <section class="card" style="padding:18px;">
-    <p style="margin:12px 0; position:relative;">
-  <input id="password" type="password" placeholder="Password" style="padding-right:40px;">
-  <span id="toggle-password" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); cursor:pointer; color:#8ee3a8; font-size:18px;">👁️</span>
-</p>
+      <p style="margin:12px 0; position:relative;">
+        <input id="password" type="password" placeholder="Password" style="padding-right:40px; width:100%;">
+        <span id="toggle-password" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); cursor:pointer; color:#8ee3a8; font-size:18px;">👁️</span>
+      </p>
+      <button class="btn" id="login-btn">Log in</button>
     </section>
   </div>
+
   <script>
-   document.getElementById('login-btn').onclick = async () => {
-  const res = await fetch('/api/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ password: document.getElementById('password').value })
-  });
-  const data = await res.json();
-  if (!res.ok) {
-    window.location.href = '/wrong-password.html';
-    return;
-  }
-  window.location.href = '/';
-};
+    document.getElementById('login-btn').onclick = async () => {
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: document.getElementById('password').value })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        window.location.href = '/wrong-password.html';
+        return;
+      }
+      window.location.href = '/';
+    };
   </script>
+
   <script>
-document.getElementById('toggle-password').onclick = () => {
-  const input = document.getElementById('password');
-  const toggle = document.getElementById('toggle-password');
-  if (input.type === 'password') {
-    input.type = 'text';
-    toggle.textContent = '🙈';
-  } else {
-    input.type = 'password';
-    toggle.textContent = '👁️';
-  }
-};
-</script>
-    <section class="wrap">
-  <div class="contact-box">
-    <h3>CONTACT US</h3>
-    <p>Technical Support: TechSupport@3DRaffled.com</p>
-    <p>Administration: Admin@3DRaffled.com</p>
-    <p>Illustrations: ArtWork@3DRaffled.com</p>
-    <p><a href="privacy.html">Privacy Policy</a></p>
-    <p>Based in the United States of America</p>
-    <p style="margin-top:14px;"><a href="https://x.com/3DCeasedNFT?s=20">Twitter</a></p>
-    <p>© 2026 3DRaffles<br>© 2025 3DCeased</p>
-    <p>Ver: 1.261005.001</p>
-  </div>
-</section>
+    document.getElementById('toggle-password').onclick = () => {
+      const input = document.getElementById('password');
+      const toggle = document.getElementById('toggle-password');
+      if (input.type === 'password') {
+        input.type = 'text';
+        toggle.textContent = '🙈';
+      } else {
+        input.type = 'password';
+        toggle.textContent = '👁️';
+      }
+    };
+  </script>
+
+  <section class="wrap">
+    <div class="contact-box">
+      <h3>CONTACT US</h3>
+      <p>Technical Support: TechSupport@3DRaffled.com</p>
+      <p>Administration: Admin@3DRaffled.com</p>
+      <p>Illustrations: ArtWork@3DRaffled.com</p>
+      <p><a href="privacy.html">Privacy Policy</a></p>
+      <p>Based in the United States of America</p>
+      <p style="margin-top:14px;"><a href="https://x.com/3DCeasedNFT?s=20">Twitter</a></p>
+      <p>© 2026 3DRaffles<br>© 2025 3DCeased</p>
+      <p>Ver: 1.261005.001</p>
+    </div>
+  </section>
 </body>
 </html>
