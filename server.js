@@ -392,10 +392,29 @@ app.post('/api/register', (req, res) => {
 });
 
 app.post('/api/login', (req, res) => {
+  // Check if locked
+  if (req.session.loginLockUntil && Date.now() < req.session.loginLockUntil) {
+    const minutes = Math.ceil((req.session.loginLockUntil - Date.now()) / 60000);
+    return res.status(429).json({ error: `Too many attempts. Try again in ${minutes} minute(s).` });
+  }
+
   const password = String(req.body.password || '');
   if (!process.env.ADMIN_PASSWORD || password !== process.env.ADMIN_PASSWORD) {
+    // Track failed attempts
+    req.session.failedAttempts = (req.session.failedAttempts || 0) + 1;
+
+    if (req.session.failedAttempts >= 5) {
+      req.session.loginLockUntil = Date.now() + 5 * 60 * 1000; // 5 minutes
+      req.session.failedAttempts = 0;
+      return res.status(429).json({ error: 'Too many attempts. Locked for 5 minutes.' });
+    }
+
     return res.status(401).json({ error: 'Wrong password.' });
   }
+
+  // Success — clear attempts
+  req.session.failedAttempts = 0;
+  req.session.loginLockUntil = null;
   req.session.account = { username: 'admin' };
   req.session.save(() => res.json({ ok: true }));
 });
