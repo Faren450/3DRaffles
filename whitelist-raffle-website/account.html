@@ -13,9 +13,10 @@
       <p>Staff login</p>
     </section>
     <section class="card" style="padding:18px;">
-      <p style="margin:12px 0;"><input id="password" type="password" placeholder="Password"></p>
-      <button class="btn" id="login-btn">Log in</button>
-      <p class="meta" id="result"></p>
+    <p style="margin:12px 0; position:relative;">
+  <input id="password" type="password" placeholder="Password" style="padding-right:40px;">
+  <span id="toggle-password" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); cursor:pointer; color:#8ee3a8; font-size:18px;">👁️</span>
+</p>
     </section>
   </div>
   <script>
@@ -33,6 +34,19 @@
   window.location.href = '/';
 };
   </script>
+  <script>
+document.getElementById('toggle-password').onclick = () => {
+  const input = document.getElementById('password');
+  const toggle = document.getElementById('toggle-password');
+  if (input.type === 'password') {
+    input.type = 'text';
+    toggle.textContent = '🙈';
+  } else {
+    input.type = 'password';
+    toggle.textContent = '👁️';
+  }
+};
+</script>
     <section class="wrap">
   <div class="contact-box">
     <h3>CONTACT US</h3>
