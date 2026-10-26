@@ -63,63 +63,70 @@
         </div>
 
       <div class="form-group">
-        <label>Description</label>
+          <span title="The public description for the raffle/whitelist event">Public Raffle Description</span>
         <textarea id="description" title="The public description of what the raffle/whitelist event is about" placeholder="Description"></textarea>
       </div>
 
       <div class="form-group">
-        <label>Banner image (max 500px x 100px)</label>
+          <span title="Banner image must be no more than 500px wide by 100px high)">Raffle Banner Image</span>
         <input id="banner" type="file" accept="image/*">
         <img id="banner-preview" style="max-width:220px; margin-top:10px; display:none; border-radius:12px;">
       </div>
 
       <div class="form-group">
-        <label>Number of winners</label>
+          <span title="Enter the maximum number of winners desired before early termination">Raffle Winners Count</span>
         <input id="winners" type="number" min="1" placeholder="Number of winners">
       </div>
 
       <div class="form-group">
-        <label>Duration in hours</label>
+          <span title="Enter the number of hours for your raffle to run before termination">Raffle Duration</span>
         <input id="hours" type="number" min="0.1" step="0.1" placeholder="Duration in hours">
       </div>
 
       <div class="form-group">
-        <label>Server</label>
+          <span title="Enter the Discord Server you want the raffle to report to (3d-ceased)">Pre-selected Raffle Host Server</span>
         <select id="guildId"></select>
       </div>
 
       <div class="form-group">
-        <label>Channel</label>
+          <span title="Enter the preselected channle you want the Raffle to report to (raffle-results)">Pre-Selected Raffle Host Channel</span>
         <select id="channelId"></select>
       </div>
 
       <div class="form-group">
-        <label>Required role ID (optional)</label>
+          <span title="Enter any roles you want to qualify your entrants">Raffle Role Requirements (optional)</span>
         <input id="requiredRoleId" placeholder="Required role ID">
       </div>
 
+<!---------------- PLEASE NOTE (NEEDS NEW OPTION/REV OPTION) -------------------->
       <div class="form-group">
-        <label>Entry type</label>
+          <span title="Select the required information you need from your Entrants">Entrant Requirements</span>
         <select id="entryType">
           <option value="email">Email only</option>
-          <option value="email+wallet">Email + Wallet</option>
+          <option value="email+wallet">Email + Wallet</option><!This value needs to be split into just WALLET.>
+          <!Need to add "username" option>
         </select>
       </div>
+<!------------------------------------------------>
 
+<!---------------- PLEASE NOTE (UNCLEAR REQUEST) -------------------------->
       <div class="form-group">
         <label>Public notes / prize info</label>
         <textarea id="publicNotes" placeholder="Public prize or notes (shown on the raffle)"></textarea>
       </div>
+<!------------------------------------------------>
 
       <div class="form-group">
-        <label>Private notes for winners (optional)</label>
+          <span title="Enter any information you want to convey to your Entrant "winners" at the end of the event">Winners Notes</span>
         <textarea id="privateNotes" placeholder="Private notes for winners"></textarea>
       </div>
 
+<!---------------- PLEASE NOTE (PLEASE VERIFY DESCRIPTION) -------------------------->
       <div class="form-group">
-        <label>Project link (optional)</label>
+          <span title="Enter any links to other information about your Raffle">Additional Raffle Info Links</span>
         <input id="projectLink" placeholder="Project link">
       </div>
+<!------------------------------------------------>
 
       <button class="btn" id="create-btn">Post Raffle</button>
       <p class="meta" id="result" style="margin-top:12px;"></p>
