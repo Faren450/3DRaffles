@@ -48,23 +48,26 @@
 
     <section class="hero">
       <h1>Create a raffle</h1>
-      <p>Fill in the details below. The raffle will be posted to the selected Discord channel.</p>
+      <p>If you haven't already chosen a Discord Channel to post your raffle to, you need to do this prior to filling out this form.
+         Pressing the "POST RAFFLE" button will post your completed or partially completed raffle to the selected Discord channel entered in the form.
+        Please make sure you have a preselected posting channel in mind before completing this form.
+      </p>
     </section>
 
     <section class="card" style="padding:24px; margin-bottom:80px;">
       <p class="meta" id="payment-status">Checking payment...</p>
       <div class="form-group">
         <label>Raffle title</label>
-        <input id="title" placeholder="Raffle title">
+        <input id="title" title="The public title for the raffle/whitelist event" placeholder="Raffle title">
       </div>
 
       <div class="form-group">
         <label>Description</label>
-        <textarea id="description" placeholder="Description"></textarea>
+        <textarea id="description" title="The public description of what the raffle/whitelist event is about" placeholder="Description"></textarea>
       </div>
 
       <div class="form-group">
-        <label>Banner image</label>
+        <label>Banner image (max 500px x 100px)</label>
         <input id="banner" type="file" accept="image/*">
         <img id="banner-preview" style="max-width:220px; margin-top:10px; display:none; border-radius:12px;">
       </div>
@@ -117,7 +120,7 @@
         <input id="projectLink" placeholder="Project link">
       </div>
 
-      <button class="btn" id="create-btn">Create and post to Discord</button>
+      <button class="btn" id="create-btn">Post Raffle</button>
       <p class="meta" id="result" style="margin-top:12px;"></p>
     </section>
   </div>
